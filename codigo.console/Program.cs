@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using codigo.produccion.Equipo;
+using System.Text.Json;
 
 namespace codigo.console
 {
@@ -8,20 +8,45 @@ namespace codigo.console
     {
         static void Main(string[] args)
         {
-            var ec = new EquipoConstructor();
-            ec.Temas = new List<string>() {
-                "A", "B", "C", "D", "E", "F", "G", "H", "I","J","K","L","M"
-            };
-            ec.Estudiantes = new List<string>() {
-                "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9",
-                "E10", "E20", "E30", "E40", "E50", "E60", "E70", "E80", "E90",
-                "E110", "E210", "E130", "E140", "E510", "E601", "E710", "E810", "E901"
-            };
-
-            ec.GenerarEquipos(9);
-            ec.AsignarTemas();
             
-            Console.Write(ec.Equipos);
+            if (args.Length == 3)
+            {   
+                //int number;
+                string students_path = args[0];
+                string topics_path = args[1];
+                bool success = Int32.TryParse(args[2], out int teams_quantity);
+                
+                if(success)
+                {
+                    Console.WriteLine($"{students_path} {topics_path} {teams_quantity}");
+                    var s = new EquipoConstructor();
+                    s.ObtenerEstudiantes(students_path);
+                    s.ObtenerTemas(topics_path);
+                    s.GenerarEquipos(teams_quantity);
+                    var teams = JsonSerializer.Serialize(s.Equipos);
+                    Console.WriteLine(teams);
+                    
+                }
+                else
+                {
+                    usage();
+                }
+            }
+            else if (args.Length < 3)
+            {
+                usage();
+            }
+            
+            else if (args.Length > 3)
+            {
+                usage();
+            }
+        }
+        
+        static void usage()
+        {
+            Console.WriteLine("Uso: ./program.exe /ruta/del/archivo/de/estudiantes /ruta/archivo/de/temas cantidad de equipoos que quieres generar");
+            Environment.Exit(1);
         }
     }
 }
