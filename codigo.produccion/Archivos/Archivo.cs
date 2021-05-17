@@ -4,6 +4,10 @@ namespace codigo.produccion.Archivos
 {
     public class Archivo : IArchivo
     {
+        public Archivo()
+        {
+            Lineas = new List<string>();
+        }
         public List<string> Lineas { get; set; }
         public string Leer(string ruta)
         {
