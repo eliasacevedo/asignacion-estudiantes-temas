@@ -11,7 +11,6 @@ namespace codigo.console
             
             if (args.Length == 3)
             {   
-                //int number;
                 string students_path = args[0];
                 string topics_path = args[1];
                 bool success = Int32.TryParse(args[2], out int teams_quantity);
@@ -23,6 +22,7 @@ namespace codigo.console
                     s.ObtenerEstudiantes(students_path);
                     s.ObtenerTemas(topics_path);
                     s.GenerarEquipos(teams_quantity);
+                    s.AsignarTemas();
                     var teams = JsonSerializer.Serialize(s.Equipos);
                     Console.WriteLine(teams);
                     
