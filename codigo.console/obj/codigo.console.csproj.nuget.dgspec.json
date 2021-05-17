@@ -1,0 +1,116 @@
+{
+  "format": 1,
+  "restore": {
+    "/root/GroupsCreator/codigo.console/codigo.console.csproj": {}
+  },
+  "projects": {
+    "/root/GroupsCreator/codigo.console/codigo.console.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/GroupsCreator/codigo.console/codigo.console.csproj",
+        "projectName": "codigo.console",
+        "projectPath": "/root/GroupsCreator/codigo.console/codigo.console.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/GroupsCreator/codigo.console/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "/root/GroupsCreator/codigo.produccion/codigo.produccion.csproj": {
+                "projectPath": "/root/GroupsCreator/codigo.produccion/codigo.produccion.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/GroupsCreator/codigo.produccion/codigo.produccion.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/GroupsCreator/codigo.produccion/codigo.produccion.csproj",
+        "projectName": "codigo.produccion",
+        "projectPath": "/root/GroupsCreator/codigo.produccion/codigo.produccion.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/GroupsCreator/codigo.produccion/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.203/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
