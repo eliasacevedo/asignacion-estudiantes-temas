@@ -6,7 +6,7 @@ namespace codigo.produccion.Interfaces
         string Nombre { get; }
         List<string> Estudiantes { get; }
         void AgregarParticipante(string estudiante);
-        string Tema { get; set; }
+        List<string> Temas { get; set; }
     }
     
 }
