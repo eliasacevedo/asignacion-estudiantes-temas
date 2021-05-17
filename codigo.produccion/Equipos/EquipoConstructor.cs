@@ -10,6 +10,14 @@ namespace codigo.produccion.Equipo
         public List<string> Estudiantes { get ; set ; }
         public List<string> Temas { get ; set; }
         public List<IEquipo> Equipos { get; set; }
+        private IUtilidad utilidad;
+        public EquipoConstructor()
+        {
+            utilidad = new Utilidad();
+            Equipos = new List<IEquipo>();
+            Estudiantes = new List<string>();
+            Temas = new List<string>();
+        }
 
         public void ObtenerTemas(string rutaArchivoTemas)
         {
@@ -27,13 +35,16 @@ namespace codigo.produccion.Equipo
 
         public void AsignarTemas()
         {                                                       
-            if (Temas.Count > Equipos.Count) {
+            if (Temas.Count < Equipos.Count) {
                 throw new System.Exception("No pueden haber mas temas que equipos");
             }
 
-            var a = new Utilidad();
-            var indices = a.AsignarAleatoriamente<string, IEquipo>(Temas, Equipos);
+            var indices = utilidad.AsignarAleatoriamente<string, IEquipo>(Temas, Equipos);
             
+            for (int i = 0; i < indices.Count; i++)
+            {
+                Equipos[indices[i]].Temas.Add(Temas[i]);
+            }
         }
 
         public void GenerarEquipos(int cantidadEquipos)
@@ -42,11 +53,17 @@ namespace codigo.produccion.Equipo
                 throw new System.Exception("No pueden haber menos estudiantes que equipos");
             }
 
+            for (int i = 0; i < cantidadEquipos; i++)
+            {
+                Equipos.Add(new Equipo($"Equipo {i + 1}"));
+            }
+
+            var indices = utilidad.AsignarAleatoriamente<string, IEquipo>(Estudiantes, Equipos);
             
-        }
-
-        private void GenerarEquiposBase(int cantidadEquipos) {
-
+            for (int i = 0; i < indices.Count; i++)
+            {
+                Equipos[indices[i]].AgregarParticipante(Estudiantes[i]);
+            }
         }
     }
 }

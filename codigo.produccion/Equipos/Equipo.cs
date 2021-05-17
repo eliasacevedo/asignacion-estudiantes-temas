@@ -12,11 +12,12 @@ namespace codigo.produccion.Equipo
         }
         public string Nombre { get; }
         public List<string> Estudiantes { get; }
-        public string Tema { get; set; }
+        public List<string> Temas { get; set; }
 
         public void AgregarParticipante(string estudiante)
         {
             Estudiantes.Add(estudiante);
+            Temas = new List<string>();
         }
 
     }
