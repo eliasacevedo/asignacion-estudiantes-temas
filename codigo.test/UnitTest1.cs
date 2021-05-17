@@ -10,9 +10,46 @@ namespace codigo.test
         }
 
         [Test]
-        public void Test1()
+        public void LessStudentsThanGroups()
         {
             Assert.Pass();
         }
+
+        [Test]
+        public void SameStudents_SameGroups()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void MoreStudentsThanGroups()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void MoreGroupsThanTopics()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void SameTopics_SameGroups()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void MoreTopicsThanGroups()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void TestingRamdomness()
+        {
+            Assert.Pass();
+        }
+        
     }
 }
