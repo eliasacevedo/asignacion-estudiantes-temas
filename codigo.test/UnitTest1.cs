@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 
 namespace codigo.test
 {
@@ -10,40 +11,107 @@ namespace codigo.test
             
         }
 
+        void ExceptionGroups()
+        {
+            throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
+        }
+
+        void ExceptionTopic()
+        {
+            throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
+        }
+
+
         [Test]
         public void LessStudentsThanGroups()
         {
-            Assert.Pass();
+
+            int studentsQuantity = 5; 
+            int groupsQuantity = 6;
+            
+            if(studentsQuantity < groupsQuantity){
+
+              Assert.Throws<ArgumentException>(ExceptionGroups);
+
+            } 
+
         }
 
         [Test]
         public void SameStudents_SameGroups()
         {
-            Assert.Pass();
+
+            int studentsQuantity = 5; 
+            int groupsQuantity = 5;
+            
+            if(studentsQuantity == groupsQuantity)
+            {
+
+                Assert.Pass();
+                
+            }
+            
         }
 
         [Test]
         public void MoreStudentsThanGroups()
         {
-            Assert.Pass();
+
+            int studentsQuantity = 10; 
+            int groupsQuantity = 5;
+
+            if(studentsQuantity > groupsQuantity){
+
+              Assert.Pass(); 
+
+            }
+
         }
 
         [Test]
         public void MoreGroupsThanTopics()
         {
-            Assert.Pass();
+
+            int groupsQuantity = 10; 
+            int topicsQuantity = 5;
+
+            if(groupsQuantity > topicsQuantity){
+
+              Assert.Throws<ArgumentException>(ExceptionTopic);
+
+            } 
+            
         }
 
         [Test]
         public void SameTopics_SameGroups()
         {
-            Assert.Pass();
+            
+            int groupsQuantity = 5; 
+            int topicsQuantity = 5;
+
+            if(topicsQuantity == groupsQuantity)
+            {
+
+                Assert.Pass();
+                
+            }
+
         }
 
         [Test]
         public void MoreTopicsThanGroups()
         {
-            Assert.Pass();
+
+            int groupsQuantity = 5; 
+            int topicsQuantity = 10;
+
+            if(topicsQuantity > groupsQuantity){
+
+              Assert.Pass();
+
+            }
+
         }
 
         [Test]
@@ -51,6 +119,6 @@ namespace codigo.test
         {
             Assert.Pass();
         }
-        
+
     }
 }
