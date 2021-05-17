@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 
 namespace codigo.test
@@ -12,7 +13,17 @@ namespace codigo.test
         [Test]
         public void LessStudentsThanGroups()
         {
-            Assert.Pass();
+            //int students = 4; int groups = 5;
+            //bool result;
+            //if (students < groups)
+            //{
+            //    result = false;
+            //}
+            //else
+            //{
+            //    result = true;
+            //}
+            //Assert.AreEqual(result, false);
         }
 
         [Test]
