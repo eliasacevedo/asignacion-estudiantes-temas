@@ -2,12 +2,15 @@ using System.Collections.Generic;
 
 namespace codigo.produccion.Interfaces
 {
-    public interface EquipoConstructor{
+    public interface IEquipoConstructor{
         List<string> Estudiantes{get;set;}
         List<string> Temas {get;set;}
-        List<Equipo> Equipos {get;set;}
+        List<IEquipo> Equipos {get;set;}
 
-        void GenerarEquipos(uint cantidadEquipos, string rutaArchivoEstudiantes);
-        void AsignarTemasEquipos(string rutaArchivoTemas, List<Equipo> Equipos);
+        void ObtenerEstudiantes(string rutaArchivoEstudiantes);
+        void ObtenerTemas(string rutaArchivoTemas);
+        void GenerarEquipos(int cantidadEquipos);
+        void AsignarTemas();
+        
     }
 }
