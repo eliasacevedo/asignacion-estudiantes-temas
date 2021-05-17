@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using codigo.produccion.Archivos;
 using codigo.produccion.Interfaces;
+using codigo.produccion.Utilidades;
 
 namespace codigo.produccion.Equipo
 {
@@ -26,7 +27,13 @@ namespace codigo.produccion.Equipo
 
         public void AsignarTemas()
         {                                                       
-            throw new System.NotImplementedException();
+            if (Temas.Count > Equipos.Count) {
+                throw new System.Exception("No pueden haber mas temas que equipos");
+            }
+
+            var a = new Utilidad();
+            var indices = a.AsignarAleatoriamente<string, IEquipo>(Temas, Equipos);
+            
         }
 
         public void GenerarEquipos(int cantidadEquipos)
