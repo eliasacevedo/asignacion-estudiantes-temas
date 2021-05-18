@@ -134,27 +134,56 @@ namespace codigo.test
             Archivo archivo = new Archivo();
             EquipoConstructor equipoCon = new EquipoConstructor();
 
-            equipoCon.ObtenerTemas(@"C:\Users\Mario\source\repos\asignacion-estudiantes-temas\teams.txt");
-            equipoCon.ObtenerEstudiantes(@"C:\Users\Mario\source\repos\asignacion-estudiantes-temas\students.txt");
+            var pasaPrueba = true;
+            const double error = 0.05;
+            const int cantidadEquipos = 5;
+            const int cantidadRepeticiones = 1000;
 
-            for (int i = 0; i < 1000; i++)
+            equipoCon.ObtenerTemas(@"/home/elias/Documents/INTEC/Tendencias/Practicas/asignacion-estudiantes-temas/teams.txt");
+            equipoCon.ObtenerEstudiantes(@"/home/elias/Documents/INTEC/Tendencias/Practicas/asignacion-estudiantes-temas/students.txt");
+
+            var estudiantes = new Dictionary<string, Dictionary<string, int>>();
+            for (int i = 0; i < cantidadRepeticiones; i++)
             {
-                equipoCon.GenerarEquipos(5);
+                equipoCon.GenerarEquipos(cantidadEquipos);
                 equipoCon.AsignarTemas();
 
-            }
-            Assert.Pass();
-        }
-        public void ContadorEstudiantes(List<IEquipo> equipos)
-        {
-            Dictionary<string, Dictionary<string, int>> contradorEst = new Dictionary<string, Dictionary<string, int>>();
-            foreach (var item in equipos)
-            {
-                
+                foreach (var equipo in equipoCon.Equipos)
+                {
+                    foreach (var estudiante in equipo.Estudiantes) {
+                        if (estudiantes.ContainsKey(estudiante)) {
+                            if (estudiantes[estudiante].ContainsKey(equipo.Nombre)) {
+                                estudiantes[estudiante][equipo.Nombre] += 1;
+                                continue;
+                            }
+                            estudiantes[estudiante].Add(equipo.Nombre, 1);
+                            continue;
+                        }
+                        estudiantes.Add(estudiante, new Dictionary<string, int>());
+                        estudiantes[estudiante].Add(equipo.Nombre, 1);
+                    }
+                }
             }
 
-        }
-        
+
+            foreach (var estudiante in estudiantes)
+            {
+                if (!pasaPrueba) {
+                    break;
+                }
+
+                foreach (var equipo in estudiante.Value.Keys) {
+                    double frecuencia = (double)estudiantes[estudiante.Key][equipo] / (double)cantidadRepeticiones;
+                    double probabilidad = 1 / (double)cantidadEquipos;
+                    if (frecuencia < probabilidad - error || frecuencia > probabilidad + error ) {
+                        pasaPrueba = false;
+                        break;
+                    }
+                }
+            }
+
+            Assert.IsTrue(pasaPrueba);
+        }        
     }
 }
 

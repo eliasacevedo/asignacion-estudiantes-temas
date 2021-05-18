@@ -36,8 +36,9 @@ namespace codigo.produccion.Equipo
         public void AsignarTemas()
         {                                                       
             if (Temas.Count < Equipos.Count) {
-                throw new System.Exception("No pueden haber mas temas que equipos");
+                throw new System.Exception("No pueden haber menos temas que equipos");
             }
+            // Temas.Clear();
 
             var indices = utilidad.AsignarAleatoriamente<string, IEquipo>(Temas, Equipos);
             
@@ -52,6 +53,8 @@ namespace codigo.produccion.Equipo
             if (Estudiantes.Count < cantidadEquipos) {
                 throw new System.Exception("No pueden haber menos estudiantes que equipos");
             }
+
+            Equipos.Clear();
 
             for (int i = 0; i < cantidadEquipos; i++)
             {
