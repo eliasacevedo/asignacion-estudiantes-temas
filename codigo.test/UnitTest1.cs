@@ -14,20 +14,17 @@ namespace codigo.test
         {
 
         }
-
         void ExceptionGroups()
         {
             throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
         }
-
         void ExceptionTopic()
         {
             throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
         }
-
-
         [Test]
         public void LessStudentsThanGroups()
+        
         {
 
             //int students = 4; int groups = 5;
@@ -64,7 +61,6 @@ namespace codigo.test
 
             if (studentsQuantity == groupsQuantity)
             {
-
                 Assert.Pass();
 
             }
@@ -161,3 +157,4 @@ namespace codigo.test
         
     }
 }
+
