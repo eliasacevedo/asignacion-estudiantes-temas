@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using codigo.produccion.Equipo;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -31,6 +32,8 @@ namespace codigo.console
                     s.GenerarEquipos(teams_quantity);
                     s.AsignarTemas();
                     string json = JsonConvert.SerializeObject(s.Equipos, Formatting.Indented);
+                    jsonStringToCSV(json);
+                    
                     Console.WriteLine(json);
                     
                 }
@@ -54,6 +57,20 @@ namespace codigo.console
         {
             Console.WriteLine("Uso: ./program.exe /ruta/del/archivo/de/estudiantes /ruta/archivo/de/temas cantidad de equipoos que quieres generar");
             Environment.Exit(1);
+        }
+        
+        public static void jsonStringToCSV(string jsonContent)
+        {
+            var dataTable = (DataTable)JsonConvert.DeserializeObject(jsonContent, (typeof(DataTable)));
+
+            //Datatable to CSV
+            var lines = new List<string>();
+            string[] columnNames = dataTable.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
+            var header = string.Join(",", columnNames);
+            lines.Add(header);
+            var valueLines = dataTable.AsEnumerable().Select(row => string.Join(",", row.ItemArray));
+            lines.AddRange(valueLines);
+            File.WriteAllLines(@"./Export.csv", lines);
         }
     }
 }
