@@ -1,12 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
-    <ProjectReference Include="..\codigo.produccion\codigo.produccion.csproj" />
+    <ProjectReference Include="..\codigo.produccion\codigo.produccion.csproj"/>
   </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2"/>
+    <PackageReference Include="SpreadsheetLight" Version="3.5.0"/>
+    <PackageReference Include="GemBox.Spreadsheet" Version="47.0.1207"/>
+  </ItemGroup>
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-
 </Project>

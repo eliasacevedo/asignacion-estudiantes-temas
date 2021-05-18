@@ -1,6 +1,11 @@
 ﻿using System;
 using codigo.produccion.Equipo;
-using System.Text.Json;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Data;
+using System.Linq;
+using GemBox.Spreadsheet;
+using System.Collections.Generic;
 
 namespace codigo.console
 {
@@ -23,8 +28,8 @@ namespace codigo.console
                     s.ObtenerTemas(topics_path);
                     s.GenerarEquipos(teams_quantity);
                     s.AsignarTemas();
-                    var teams = JsonSerializer.Serialize(s.Equipos);
-                    Console.WriteLine(teams);
+                    string json = JsonConvert.SerializeObject(s.Equipos, Formatting.Indented);
+                    Console.WriteLine(json);
                     
                 }
                 else
