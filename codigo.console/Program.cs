@@ -13,6 +13,8 @@ namespace codigo.console
     {
         static void Main(string[] args)
         {
+        
+            SpreadsheetInfo.SetLicense("FREE-LIMITED-KEY");
             
             if (args.Length == 3)
             {   
