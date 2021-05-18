@@ -1,6 +1,5 @@
 using System;
 using NUnit.Framework;
-using System;
 
 namespace codigo.test
 {
@@ -11,38 +10,29 @@ namespace codigo.test
         {
             
         }
-
         void ExceptionGroups()
         {
             throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
         }
-
         void ExceptionTopic()
         {
             throw new ArgumentException("Los grupos no pueden ser mayores a los estudiantes");
         }
-
-
         [Test]
         public void LessStudentsThanGroups()
+        
         {
             Assert.Pass();
         }
-
-        }
-
         [Test]
         public void SameStudents_SameGroups()
         {
-
             int studentsQuantity = 5; 
             int groupsQuantity = 5;
             
             if(studentsQuantity == groupsQuantity)
             {
-
                 Assert.Pass();
-                
             }
             
         }
@@ -56,7 +46,7 @@ namespace codigo.test
 
             if(studentsQuantity > groupsQuantity){
 
-              Assert.Pass(); 
+                Assert.Pass(); 
 
             }
 
@@ -71,7 +61,7 @@ namespace codigo.test
 
             if(groupsQuantity > topicsQuantity){
 
-              Assert.Throws<ArgumentException>(ExceptionTopic);
+                Assert.Throws<ArgumentException>(ExceptionTopic);
 
             } 
             
@@ -102,7 +92,7 @@ namespace codigo.test
 
             if(topicsQuantity > groupsQuantity){
 
-              Assert.Pass();
+                Assert.Pass();
 
             }
 
@@ -113,6 +103,6 @@ namespace codigo.test
         {
             Assert.Pass();
         }
-
     }
 }
+
